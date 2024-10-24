@@ -1,7 +1,6 @@
 import * as React from "react"
-import { TextField } from "../parts/TextField"
 import { useState } from "react"
-import { Button } from "../parts/Button"
+import { Box, Button, HStack, Input } from "@chakra-ui/react"
 
 type Props = {
   addTodo: (newTask: string, newPerson: string, newDeadline: string) => void
@@ -11,7 +10,6 @@ export const NewTodoForm = ({ addTodo }: Props) => {
   const [newTask, setNewTask] = useState<string>("")
   const [newPerson, setNewPerson] = useState<string>("")
   const [newDeadline, setNewDeadline] = useState<string>("")
-  console.log("NewTodoFormコンポーネントのレンダー")
 
   const addNewTodo = () => {
     addTodo(newTask, newPerson, newDeadline)
@@ -22,31 +20,28 @@ export const NewTodoForm = ({ addTodo }: Props) => {
   }
 
   return (
-    <div className="flex gap-1">
-      <TextField
-        id="new-task"
-        label="タスク名"
-        type="text"
+    <HStack spacing="4">
+      <Input
+        placeholder="タスク名"
         value={newTask}
-        onChange={setNewTask}
+        onChange={(e) => setNewTask(e.target.value)}
       />
-      <TextField
-        id="new-person"
-        label="担当者名"
-        type="text"
+      <Input
+        placeholder="担当者名"
         value={newPerson}
-        onChange={setNewPerson}
+        onChange={(e) => setNewPerson(e.target.value)}
       />
-      <TextField
-        id="new-deadline"
-        label="締切"
-        type="date"
+      <Input
+        placeholder="締切"
         value={newDeadline}
-        onChange={setNewDeadline}
+        onChange={(e) => setNewDeadline(e.target.value)}
+        type="date"
       />
-      <Button onClick={addNewTodo} color="blue">
-        追加
-      </Button>
-    </div>
+      <Box>
+        <Button onClick={addNewTodo} colorScheme="blue">
+          追加
+        </Button>
+      </Box>
+    </HStack>
   )
 }
