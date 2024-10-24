@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const path = require("path")
 
 module.exports = {
   entry: "./src/js/index.tsx",
@@ -37,7 +38,10 @@ module.exports = {
     new MiniCssExtractPlugin(),
   ],
   resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+    },
     // 拡張子を配列で指定
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: [".tsx", ".ts", ".js", ".jsx"],
   },
 }
