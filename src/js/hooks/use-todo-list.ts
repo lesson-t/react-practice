@@ -13,27 +13,25 @@ export const useTodoList = () => {
     }
   }, [])
 
-  // todoListが更新されるたびに、LocalStorageにデータを保存する
-  useEffect(() => {
-    localStorage.setItem("todo-list", JSON.stringify(todoList))
-  }, [todoList]) //依存配列
-
-  const addTodo = (newTask: string, newPerson: string, newDeadline: string) =>
-    setTodoList((prev: Todo[]) => [
-      ...prev,
+  const addTodo = (newTask: string, newPerson: string, newDeadline: string) => {
+    const updatedTodoList = [
+      ...todoList,
       {
-        id: Date.now(),
+        id: Date.now().toString(),
         task: newTask,
         person: newPerson,
         deadline: newDeadline,
       },
-    ])
+    ]
+    localStorage.setItem("todo-list", JSON.stringify(updatedTodoList))
+    setTodoList(updatedTodoList)
+  }
 
-  const deleteTodo = useCallback(
-    (id: number) =>
-      setTodoList((prev) => prev.filter((todo) => todo.id !== id)),
-    [],
-  )
+  const deleteTodo = (id: string) => {
+    const updatedTodoList = todoList.filter((todo) => todo.id !== id)
+    localStorage.setItem("todo-list", JSON.stringify(updatedTodoList))
+    setTodoList(updatedTodoList)
+  }
 
   const filteredTodoList = useMemo(
     () =>

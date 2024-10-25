@@ -7,11 +7,21 @@ module.exports = {
   output: {
     path: `${__dirname}/dist/`,
     filename: "bundle.js",
+    publicPath: "/",
   },
   mode: "development",
   devServer: {
     static: {
       directory: "./dist",
+    },
+    historyApiFallback: {
+      index: "index.html",
+    },
+    devMiddleware: {
+      writeToDisk: (filePath) => {
+        // hot-update ファイルを除外
+        return !/\.hot-update\.(js|json|js\.map)$/.test(filePath)
+      },
     },
   },
   devtool: "source-map",
