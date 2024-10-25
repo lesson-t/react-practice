@@ -1,4 +1,4 @@
-import { useAuth } from "@/js/hooks/use-auth"
+import { useAuthStore } from "@/js/stores/use-auth-store"
 import { Avatar, Box, Button, Heading, HStack } from "@chakra-ui/react"
 import { PropsWithChildren, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
@@ -8,7 +8,7 @@ type Props = {
 }
 
 export const Layout = ({ title, children }: PropsWithChildren<Props>) => {
-  const { isLoggedIn, isLoginCheckDone, logout, userName } = useAuth()
+  const { isLoggedIn, isLoginCheckDone, logout, userName } = useAuthStore()
   const navigate = useNavigate()
 
   // ログアウト中にアクセスされたら、/loginに遷移させる

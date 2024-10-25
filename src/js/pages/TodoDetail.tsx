@@ -12,7 +12,7 @@ export const TodoDetail = () => {
 
   if (!todo) return <NotFound></NotFound>
   return (
-    <Layout title="TODO">
+    <Layout title="TODO詳細">
       <Box as="section" mt="20">
         <Box>ID:{todo?.id}</Box>
         <Box>タスク名：{todo?.task}</Box>

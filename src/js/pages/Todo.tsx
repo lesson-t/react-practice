@@ -10,7 +10,7 @@ export const Todo = () => {
     useTodoList()
 
   return (
-    <Layout title="TODO詳細">
+    <Layout title="TODO">
       <Box as="section" mt="20">
         <Heading as="h2" size="xl">
           新規TODO作成
