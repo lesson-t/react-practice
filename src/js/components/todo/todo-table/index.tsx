@@ -9,9 +9,9 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react"
-import { Todo } from "./Type"
+import { Todo } from "../Type"
 import { memo } from "react"
-import { TodoItem } from "./TodoItem"
+import { TodoItem } from "../todo-item"
 
 type Props = {
   todoList: Todo[]

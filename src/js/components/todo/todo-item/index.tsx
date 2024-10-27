@@ -2,7 +2,7 @@ import * as React from "react"
 import { memo } from "react"
 import { Button, Td, Tr } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
-import { useAuthStore } from "@/js/stores/use-auth-store"
+import { useAuthStore } from "../../../stores/use-auth-store"
 
 type Props = {
   id: string
@@ -16,7 +16,11 @@ export const TodoItem: React.FC<Props> = memo(
   ({ id, task, person, deadline, deleteTodo }: Props) => {
     const { userName } = useAuthStore()
     return (
-      <Tr color={userName === person ? "red" : ""}>
+      <Tr
+        color={userName === person ? "red" : ""}
+        data-testid="todo-row"
+        data-color={userName === person ? "red" : ""}
+      >
         <Td>
           <Link to={`/todo/${id}`}>{id}</Link>
         </Td>

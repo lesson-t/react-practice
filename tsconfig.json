@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
+    // ESモジュールとCommonJSモジュールの互換性を向上させるための設定
+    "esModuleInterop": true, // <- 追加
     "jsx": "react-jsx",
     // ソースマップを有効化
     "sourceMap": true,
@@ -14,6 +15,13 @@
       "@/*": ["./src/*"]
     },
     // 厳密モードとして設定
-    "strict": true
+    "strict": true,
+    // 参照する型定義のリストを明示的に指定する
+    "types": [
+      "jest",
+      "@testing-library/jest-dom",
+      "@testing-library/react",
+      "node"
+    ] // <- 追加
   }
 }
