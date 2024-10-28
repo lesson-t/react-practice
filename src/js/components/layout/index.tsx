@@ -2,6 +2,7 @@ import { useAuthStore } from "../../stores/use-auth-store"
 import { Avatar, Box, Button, Heading, HStack } from "@chakra-ui/react"
 import { PropsWithChildren, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import React from "react"
 
 type Props = {
   title: string

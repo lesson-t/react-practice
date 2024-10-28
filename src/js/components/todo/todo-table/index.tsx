@@ -12,6 +12,7 @@ import {
 import { Todo } from "../Type"
 import { memo } from "react"
 import { TodoItem } from "../todo-item"
+import React from "react"
 
 type Props = {
   todoList: Todo[]
